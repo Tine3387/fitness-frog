@@ -41,16 +41,35 @@ namespace Treehouse.FitnessFrog.Controllers
 
         public ActionResult Add()
         {
-            return View();
+            var entry = new Entry()
+            {
+                Date = DateTime.Today
+            };
+
+            return View(entry);
         }
 
+        /* Instead of specifying a parameter for each request form field that we need to capture, */
+        /* we can simply use a parameter of type entry named Entry. */
+        /* It is possible because MVCs model binder will recognize that our parameter is an instance of a class or */
+        /* reference type instead of a value type like string, int double, bool, or datetime */
+        /* and attempt to bind the incoming form field values to its properties. */
+        /* As long as the field names match the classes property names */
+        /* the entry object's properties will contain the expected values. */
         [HttpPost]
-        public ActionResult Add(DateTime? date,
-            int? activityId, double? duration,
-            Entry.IntensityLevel? intensity, 
-            bool? exclude, string notes)
+        public ActionResult Add(Entry entry)
         {
-            return View();
+            /* If the model state is valid, we can save the entry data model instance */
+            /* by calling the repositories at entry method. */
+            if (ModelState.IsValid)
+            {
+                _entriesRepository.AddEntry(entry);
+
+                // TODO Display the Entries list page
+
+            }
+
+            return View(entry);
         }
 
         public ActionResult Edit(int? id)

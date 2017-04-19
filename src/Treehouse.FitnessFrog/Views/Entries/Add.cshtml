@@ -1,15 +1,21 @@
-﻿
+﻿<!-- We make our view strongly typed by adding a model directive to the top of the View. -->
+<!-- By making our view strongly typed, -->
+<!-- the entry model instance that is being passed into the controllers call to -->
+<!-- the view method will now be available via the views model property. -->
+<!-- We can also update our label, text box and text area HTML helper methods to their strongly typed versions. -->
+@model Treehouse.FitnessFrog.Models.Entry
+
 @{
     ViewBag.Title = "Add Entry";
 }
 
 <h2>@ViewBag.Title</h2>
 
-@* Typically the using statement is used with unmanage ressources, *@
-@* to ensure that they are properly released and cleaned up. *@
-@* Used in this context, *@
-@* the using statement is being used to ensure *@
-@* that the closing form element is rendered after all of the form's content is rendered. *@
+<!-- Typically the using statement is used with unmanage ressources, -->
+<!-- to ensure that they are properly released and cleaned up. -->
+<!-- Used in this context, -->
+<!-- the using statement is being used to ensure -->
+<!-- that the closing form element is rendered after all of the form's content is rendered. -->
 @using (Html.BeginForm())
 {
     <div class="row">
@@ -17,28 +23,35 @@
         <div class="col-md-6">
 
             <div class="form-group">
-                @Html.Label("Date", new { @class = "control-label" })
-                @Html.TextBox("Date", null, new { @class = "form-control" })
+                <!-- Changed to LabelFor and replace our date string with a lambda(=>) expression. -->
+                <!-- You can think of a => expression as an anonymous method. -->
+                <!-- m here is a method parameter that is a reference to our views model property. -->
+                <!-- => operator is the transition from the parameter list to the method body. -->
+                <!-- m.Date is the property on our model that we're returning from our anonymous method. -->
+                <!-- This approach gives us a strongly typed way -->
+                <!-- to specify the model property that we want to render a label for -->
+                @Html.LabelFor(m => m.Date, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Date, "{0:d}", new { @class = "form-control" })
             </div>
 
             <div class="form-group">
-                @Html.Label("ActivityId", new { @class = "control-label" })
-                @Html.TextBox("ActivityId", null, new { @class = "form-control" })
+                @Html.LabelFor(m => m.ActivityId, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.ActivityId, new { @class = "form-control" })
             </div>
 
             <div class="form-group">
-                @Html.Label("Duration", new { @class = "control-label" })
-                @Html.TextBox("Duration", null, new { @class = "form-control" })
+                @Html.LabelFor(m => m.Duration, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
             </div>
 
             <div class="form-group">
-                @Html.Label("Intensity", new { @class = "control-label" })
-                @Html.TextBox("Intensity", null, new { @class = "form-control" })
+                @Html.LabelFor(m => m.Intensity, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Intensity, new { @class = "form-control" })
             </div>
 
             <div class="form-group">
-                @Html.Label("Exclude", new { @class = "control-label" })
-                @Html.TextBox("Exclude", null, new { @class = "form-control" })
+                @Html.LabelFor(m => m.Exclude, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Exclude, new { @class = "form-control" })
             </div>
 
         </div>
@@ -46,8 +59,8 @@
         <div class="col-md-6">
 
             <div class="form-group">
-                @Html.Label("Notes", new { @class = "control-label" })
-                @Html.TextArea("Notes", null, 14, 20, new { @class = "form-control" })
+                @Html.LabelFor(m => m.Notes, new { @class = "control-label" })
+                @Html.TextAreaFor(m => m.Notes, 14, 20, new { @class = "form-control" })
             </div>
 
         </div>
