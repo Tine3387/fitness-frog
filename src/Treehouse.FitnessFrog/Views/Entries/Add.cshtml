@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="ActivityId" class="control-label">Activity</label>
                 <input type="text" id="ActivityId" name="ActivityId" 
-                       class="form-control" value="@ViewBag.AcitivityId" />
+                       class="form-control" value="@ViewBag.ActivityId" />
             </div>
 
             <div class="form-group">
@@ -38,7 +38,7 @@
             <div class="form-group">
                 <label for="Exclude" class="control-label">Exclude</label>
                 <input type="text" id="Exclude" name="Exclude" 
-                       class="form-control" value="@ViewBag.Exclude" />
+                       class="form-control" value="@(ViewBag.Exclude != null ? ViewBag.Exclude.ToString() : "")" />
             </div>
 
         </div>
