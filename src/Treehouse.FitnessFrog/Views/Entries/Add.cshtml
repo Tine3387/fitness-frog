@@ -19,6 +19,9 @@
 
 <h2>@ViewBag.Title</h2>
 
+<!-- All of our error messages are displayed on the top of the page -->
+@Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
+
 <!-- Typically the using statement is used with unmanage ressources, -->
 <!-- to ensure that they are properly released and cleaned up. -->
 <!-- Used in this context, -->
@@ -46,6 +49,10 @@
                 @Html.LabelFor(m => m.ActivityId, new { @class = "control-label" })
                 @Html.DropDownListFor(m => m.ActivityId, 
                         (SelectList)ViewBag.ActivitiesSelectListItems, "", new { @class = "form-control" })
+                <!-- Our error message is displayed down at the field level -->
+                <!-- We shouldn't use field level messages by itself as it's possible to not be associated with a field -->
+                <!-- So we need the summary section to display those global messages -->
+                @*@Html.ValidationMessageFor(m => m.ActivityId)*@
             </div>
 
             <div class="form-group">
