@@ -19,9 +19,6 @@
 
 <h2>@ViewBag.Title</h2>
 
-<!-- All of our error messages are displayed on the top of the page -->
-@Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
-
 <!-- Typically the using statement is used with unmanage ressources, -->
 <!-- to ensure that they are properly released and cleaned up. -->
 <!-- Used in this context, -->
@@ -29,6 +26,9 @@
 <!-- that the closing form element is rendered after all of the form's content is rendered. -->
 @using (Html.BeginForm())
 {
+    <!-- All of our error messages are displayed on the top of the page -->
+    @Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
+
     <div class="row">
 
         <div class="col-md-6">
