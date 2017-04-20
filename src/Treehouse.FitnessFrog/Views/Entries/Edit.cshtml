@@ -1,6 +1,11 @@
-﻿
+﻿<!-- We need to make the view strongly typed by adding a model directive to the top of the view -->
+@model Treehouse.FitnessFrog.Models.Entry
+
 @{
     ViewBag.Title = "Edit Entry";
 }
 
 <h2>@ViewBag.Title</h2>
+
+<!-- Calling the partial view -->
+@Html.Partial("_EntryForm")
