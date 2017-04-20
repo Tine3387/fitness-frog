@@ -62,6 +62,13 @@ namespace Treehouse.FitnessFrog.Controllers
         [HttpPost]
         public ActionResult Add(Entry entry)
         {
+            /* If there aren't any "Duration" field validation errors */
+            /* then make sure that the duration is greater than "0". */
+            if (ModelState.IsValidField("Duration") && entry.Duration <= 0)
+            {
+                ModelState.AddModelError("Duration", "The Duration field value must be greater than '0'.");
+            }
+
             /* If the model state is valid, we can save the entry data model instance */
             /* by calling the repositories at entry method. */
             if (ModelState.IsValid)
