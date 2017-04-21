@@ -77,6 +77,9 @@ namespace Treehouse.FitnessFrog.Controllers
             {
                 _entriesRepository.AddEntry(entry);
 
+                /* Confirmation message after an entry has being added */
+                TempData["Message"] = "Your entry was successfully added!";
+
                 /* post/redirect/get design pattern to prevent duplicate form submissions */
                 return RedirectToAction("Index");
             }
@@ -122,6 +125,9 @@ namespace Treehouse.FitnessFrog.Controllers
             {
                 _entriesRepository.UpdateEntry(entry);
 
+                /* Confirmation message after an entry has being updated */
+                TempData["Message"] = "Your entry was successfully updated!";
+
                 return RedirectToAction("Index");
             }
 
@@ -156,6 +162,9 @@ namespace Treehouse.FitnessFrog.Controllers
         {
             /* Delete the entry */
             _entriesRepository.DeleteEntry(id);
+
+            /* Confirmation message after an entry has being deleted */
+            TempData["Message"] = "Your entry was successfully deleted!";
 
             /* Redirect to the "Entries" list page */
             return RedirectToAction("Index");
