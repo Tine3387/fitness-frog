@@ -77,7 +77,10 @@ namespace Treehouse.FitnessFrog.Controllers
             {
                 _entriesRepository.AddEntry(entry);
 
-                /* Confirmation message after an entry has being added */
+                /* TempData has MVC data collection properties that can be used to pass data from the current request to the next request. */
+                /* While ViewBag and ViewData data collection properties can be used to pass data from a controller to a view, */
+                /* only the TempData collection survives from the current request to the next request. */
+                /* Confirmation message after an entry has being added. */
                 TempData["Message"] = "Your entry was successfully added!";
 
                 /* post/redirect/get design pattern to prevent duplicate form submissions */
